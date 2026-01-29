@@ -6,6 +6,16 @@
     \setbeamercolor{structure}{fg=main}
     \setbeamerfont{title}{size=\LARGE, series=\bfseries}
 
+\usepackage{fontspec}
+    % English Fonts
+    \setmainfont{Consolas}
+    \setsansfont{Consolas}
+    \setmonofont{Consolas}
+    % Chinese Fonts
+    \setCJKmainfont{Microsoft YaHei}
+    \setCJKsansfont{Microsoft YaHei}
+    \setCJKmonofont{Microsoft YaHei}
+
 \AtBeginSection[]{
     \begin{frame}{目录}
         \tableofcontents[currentsection]
@@ -48,7 +58,7 @@
             language=python,
             numbers=left,
             numbersep=3pt,
-            basicstyle=\ttfamily\footnotesize,
+            basicstyle=\ttfamily\footnotesize, % Use monospaced font
             showspaces=false,
             showstringspaces=false,
             aboveskip=0pt,
@@ -61,7 +71,7 @@
         listing only,
         listing options={
             language=bash,
-            basicstyle=\ttfamily\footnotesize,
+            basicstyle=\ttfamily\footnotesize, % Use monospaced font
             showspaces=false,
             showstringspaces=false,
             aboveskip=0pt,
