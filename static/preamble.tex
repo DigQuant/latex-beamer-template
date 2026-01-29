@@ -1,0 +1,77 @@
+\usetheme{Boadilla}
+    \definecolor{main}{HTML}{3F67B8}
+    \setbeamercolor{alertblock title}{bg=main!15, fg=main}
+    \setbeamercolor{block title}{bg=main!10, fg=main}
+    \setbeamercolor{frametitle}{fg=main}
+    \setbeamercolor{structure}{fg=main}
+    \setbeamerfont{title}{size=\LARGE, series=\bfseries}
+
+\AtBeginSection[]{
+    \begin{frame}{目录}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+    \hypersetup{
+        pdfauthor={Iydon},
+        pdfcreator={Microsoft® Word 2077},
+        pdfproducer={Microsoft® Word 2077},
+        colorlinks = true,
+        linkcolor  = Aquamarine!50!black,
+        urlcolor   = YellowOrange!85!black,
+        citecolor  = violet!85!black,
+    }
+\usepackage{graphicx, tikz}
+    \addtobeamertemplate{headline}{}{
+        \ifnum\insertframenumber>1
+            \begin{tikzpicture}[remember picture, overlay]
+                \node[anchor=north east, xshift=-0.3cm, yshift=-0.3cm] at (current page.north east) {
+                    \includegraphics[height=0.6cm]{static/logo.png}
+                };
+            \end{tikzpicture}
+        \fi
+    }
+    \addtobeamertemplate{frametitle}{}{
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[line width=0.2cm, main!30]
+            ([xshift=+0.3cm, yshift=-1.3cm]current page.north west) --
+            ([xshift=-0.3cm, yshift=-1.3cm]current page.north east);
+        \end{tikzpicture}
+    }
+\usepackage[listings, skins]{tcolorbox}
+    \NewTCBListing{ipy}{ O{} m }{
+        title={#2},
+        listing only,
+        listing options={
+            language=python,
+            numbers=left,
+            numbersep=3pt,
+            basicstyle=\ttfamily\footnotesize,
+            showspaces=false,
+            showstringspaces=false,
+            aboveskip=0pt,
+            belowskip=0pt,
+        },
+        #1
+    }
+    \NewTCBListing{ish}{ O{} m }{
+        title={#2},
+        listing only,
+        listing options={
+            language=bash,
+            basicstyle=\ttfamily\footnotesize,
+            showspaces=false,
+            showstringspaces=false,
+            aboveskip=0pt,
+            belowskip=0pt,
+        },
+        #1
+    }
+
+
+\title{2025 年度工作总结}
+\author{iydon}
+\institute[DigQuant]{深圳点宽网络科技有限公司}
+\date{\today}
