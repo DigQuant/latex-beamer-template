@@ -1,34 +1,34 @@
 \begin{frame}{2025 年度工作数据概览}
     \begin{columns}
         \begin{column}{.48\textwidth}
-            \begin{block}{核心业务：培训 (231h)}
+            \begin{block}{核心业务：培训 (255h)}
                 \begin{itemize}
-                    \item \textbf{备课}：148h (占比 64\%)
                     \item \textbf{授课}：80h (线上 24h + 线下 56h)
+                    \item \textbf{备课}：172h (占比 67\%)
                     \item \textbf{答辩}：3h
                 \end{itemize}
             \end{block}
-
-            \begin{block}{课程研发 (32h)}
+            \begin{block}{服务支持 (56h)}
                 \begin{itemize}
-                    \item 课程体系梳理与重构
-                    \item 自动化教学工具开发
+                    \item 点宽杯竞赛评审 (EloGrader)
+                    \item 线上师资培训对接
+                    \item 毕业论文开题指导 (KaggleRag)
                 \end{itemize}
             \end{block}
         \end{column}
         \begin{column}{.48\textwidth}
-            \begin{block}{服务支持 (40h)}
+            \begin{block}{课程研发 (152h)}
                 \begin{itemize}
-                    \item 竞赛评审与系统开发
-                    \item 师资培训核查
-                    \item 毕业论文指导
+                    \item 数据与大数据技术课程
+                    \item Python 编程基础与工程实践
+                    \item 大语言模型与生成式人工智能
+                    \item 自动化教学工具研发 (CourseForge)
                 \end{itemize}
             \end{block}
-
-            \begin{block}{产品探索 (12h)}
+            \begin{block}{产品探索 (20h)}
                 \begin{itemize}
-                    \item 授课管理工具探索
-                    \item 教学资源自动化备份
+                    \item Ai-Lab 授课管理
+                    \item 备份 Das 用于梳理 (Crawler4Das)
                 \end{itemize}
             \end{block}
         \end{column}
@@ -39,30 +39,30 @@
     \begin{columns}[c]
         \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item[\textcolor{main}{\textbullet}] \textbf{核心业务：培训} (231h, 73.3\%)
+                \item[\textcolor{main}{\textbullet}] \textbf{核心业务：培训} (255h, 52.8\%)
                 \vspace{0.5cm}
-                \item[\textcolor{main!80}{\textbullet}] \textbf{服务支持} (40h, 12.7\%)
+                \item[\textcolor{main!60}{\textbullet}] \textbf{课程研发} (152h, 31.5\%)
                 \vspace{0.5cm}
-                \item[\textcolor{main!60}{\textbullet}] \textbf{课程研发} (32h, 10.2\%)
+                \item[\textcolor{main!80}{\textbullet}] \textbf{服务支持} (56h, 11.6\%)
                 \vspace{0.5cm}
-                \item[\textcolor{main!40}{\textbullet}] \textbf{产品探索} (12h, 3.8\%)
+                \item[\textcolor{main!40}{\textbullet}] \textbf{产品探索} (20h, 4.1\%)
             \end{itemize}
         \end{column}
-
-        \begin{column}{0.45\textwidth}
+        \begin{column}{0.4\textwidth}
             \begin{tikzpicture}
-                % Training: 231/315 = 73.3% -> 264 deg
-                \fill[main] (0,0) -- (0,2.5) arc (90:{-174}:2.5) -- cycle;
-                \node[white] at (-45:1.5) {\textbf{73.3\%}};
-                % Service: 40/315 = 12.7% -> 45.7 deg -> -174 to -219.7
-                \fill[main!80] (0,0) -- ({-174}:2.5) arc ({-174}:{-219.7}:2.5) -- cycle;
-                \node[white] at ({-196}:1.8) {\textbf{12.7\%}};
-                % Course Dev: 32/315 = 10.2% -> 36.6 deg -> -219.7 to -256.3
-                \fill[main!60] (0,0) -- ({-219.7}:2.5) arc ({-219.7}:{-256.3}:2.5) -- cycle;
-                \node[white] at ({-238}:1.8) {\textbf{10.2\%}};
-                % Product: 12/315 = 3.8% -> 13.7 deg -> -256.3 to -270 (back to 90)
-                \fill[main!40] (0,0) -- ({-256.3}:2.5) arc ({-256.3}:{-270}:2.5) -- cycle;
-                % \node[white] at ({-263}:2) {\tiny 3.8\%}; % Too small to label inside
+                \def\radius{2.2}
+                % 核心业务：培训 (255h, 52.8%)
+                \draw[fill=main, draw=white, line width=1pt] (0,0) -- (90:\radius) arc (90:-100:\radius) -- cycle;
+                % 课程研发 (152h, 31.5%)
+                \draw[fill=main!60, draw=white, line width=1pt] (0,0) -- (-100:\radius) arc (-100:-213:\radius) -- cycle;
+                % 服务支持 (56h, 11.6%)
+                \draw[fill=main!80, draw=white, line width=1pt] (0,0) -- (-213:\radius) arc (-213:-255:\radius) -- cycle;
+                % 产品探索 (20h, 4.1%)
+                \draw[fill=main!40, draw=white, line width=1pt] (0,0) -- (-255:\radius) arc (-255:-270:\radius) -- cycle;
+                % 添加数据标注 (可选)
+                \node[text=white, font=\bfseries] at (-5:\radius*0.6) {52.8\%};
+                \node[text=white, font=\bfseries] at (-156:\radius*0.6) {31.5\%};
+                \node[text=white, font=\bfseries] at (-234:\radius*0.6) {11.6\%};
             \end{tikzpicture}
         \end{column}
     \end{columns}
