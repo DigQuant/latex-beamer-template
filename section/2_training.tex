@@ -1,4 +1,20 @@
-\begin{frame}{内蒙古财经大学职业学院《AIGC 赋能课程》}
+\begin{frame}{培训概览}
+    \begin{block}{}
+        \begin{tabular}{llll}
+            \toprule
+            \textbf{项目} & \textbf{主题} & \textbf{形式} & \textbf{时间} \\
+            \midrule
+            内蒙古财经大学 & 从大模型应用到智能体实战项目 & 线上 & 2025/12/01--2025/12/12 \\
+            珠海科技学院 & Python 商务大数据分析实训 & 线下 & 2025/12/06--2025/12/07 \\
+            山西大学 & 大模型应用部署工程师实训 & 线下 & 2026/01/08--2026/01/12 \\
+            师资培训 & AI 赋能教学科研实战工作坊 & 线下 & 2026/01/20--2026/01/23 \\
+            韩山师范学院 & 人工智能金融应用实战 & 线上 & 2026/01/26--2026/01/27 \\
+            \bottomrule
+        \end{tabular}
+    \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{内蒙古财经大学《从大模型应用到智能体实战项目》}
     \begin{block}{工作投入}
         \begin{itemize}
             \item \textbf{备课}：32 小时
@@ -9,9 +25,15 @@
     \begin{exampleblock}{产出成果：大模型相关案例}
         \begin{itemize}
             \item 毕业论文选题辅助 (ThesisTopicAssistant)
-            \item AI 生成文本检测器 (AiGeneratedTextDetector)
+            \item AI 生成文本检测 (AiGeneratedTextDetector)
         \end{itemize}
     \end{exampleblock}
+
+    \begin{alertblock}{问题反馈}
+        \begin{itemize}
+            \item 第一次线上上课，对时间把控与灵活性没有经验，同时已有课件内容过长，修改起来没有头绪，只能通过增加案例的方式作为上课时间的缓冲，因此第一版 ThesisTopicAssistant 提示词内容臃肿。私以为，课件知识密度低，不适合拿来自学，新老师需要讲义辅助才能更快上手。
+        \end{itemize}
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{珠海科技学院《Python 商务大数据分析实训》}
@@ -31,9 +53,9 @@
 
     \begin{alertblock}{问题反馈}
         \begin{itemize}
-            \item \textbf{课前调查}：对学生基础的评估维度单调，“有无”选项无法精准反映班级基础层次。
-            \item \textbf{线上体验}：实训需要经常在机房内走动，帮学生解决具体问题，线上体验感较差。
-            \item \textbf{作业收集}：课后作业收集表权限需手动设置，依赖群内沟通，工具效率待优化。
+            \item 训前调查显示，Python 编程情况为“有一些基础，微专业来自不同专业的学生，不同专业掌握的情况不同”，但是根据线下实际情况来看，学生能力跨度较大，甚至部分学生连基础语法都没有掌握。因此，为了使大部分同学能学有所获，线下上课重心从第三方库详细介绍，转变为使用大模型辅助解决问题，学生能描述清楚问题并且能看懂代码即可。
+            \item 实训需要经常在机房内走动，帮学生解决具体问题，线上体验感较差。
+            \item 课后作业收集流程需优化，只是单纯下载是无法分辨学生的，因为即使课上与作业要求中强调需要修改上传作业的文件名，依然有部分学生不遵守规范。最后结果是，需要在临内项群中拿到课后作业收集表后台数据，自行下载附件与重命名。
         \end{itemize}
     \end{alertblock}
 \end{frame}
@@ -58,14 +80,14 @@
 
     \begin{alertblock}{问题反馈}
         \begin{itemize}
-            \item \textbf{课前调查}：对学生基础的评估维度单调，“有无”选项无法精准反映班级基础层次。
-            \item \textbf{环境差异}：学生电脑会出现问题：系统文件缺失、驱动过时、空间不足、代理异常。
-            \item \textbf{作业收集}：课后作业收集表权限需手动设置，依赖群内沟通，工具效率待优化。
+            \item 训前调查显示，Python 编程情况为空，人工智能知识情况为“有”，根据线下实际情况来看，参训学生部分来自计算机学院，部分来自大数据金融试验班，能力跨度较大，但好在都至少有编程基础，同时需要注意老师可能会夸大自己学生的能力。
+            \item 大模型相关案例使用到的第三方库接口变化巨大，例如 \texttt{llama-index} 与 \texttt{langchain} 等经过大模型生成的代码接口过时，因此需要有 Python 项目管理工具，包括版本管理与依赖管理。最终采用的工具为 \texttt{winget} 与 \texttt{uv}，如果不采用的话，后续案例每次运行都要花大量时间教学生配置环境与解决环境依赖冲突。
+            \item 学生电脑会出现各种各样的问题：系统文件与环境变量缺失、驱动过时、空间不足、代理异常。例如 Python 的 micro 版本过小导致动态链接库不兼容（仍在 bug-fix 阶段的版本）；手动删除 C 盘系统文件或者软件导致的动态链接库异常，极端情况甚至用到了 360；空间清理与迁移，用到了 \texttt{GeekUninstaller}、\texttt{WizTree} 与 \texttt{DiskGenius} 等工具。
         \end{itemize}
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{师资培训《AI 赋能教学科研实战工作坊》}
+\begin{frame}[allowframebreaks]{师资培训《AI 赋能教学科研实战工作坊》}
     \begin{block}{工作投入}
         \begin{itemize}
             \item \textbf{备课}：32 小时
@@ -82,12 +104,12 @@
 
     \begin{alertblock}{问题反馈}
         \begin{itemize}
-            \item \textbf{课前调查}：部分老师没有代码基础，备课内容中途推翻。
+            \item 在第二天下午才察觉到部分老师完全没有代码基础，甚至电脑操作都不熟悉，于是只能在第三天参访空隙中重新备课，内容推翻重来，到第四天下班已有 34 小时未休息。老师需要全照顾到，最终进度还差市面上已有科研相关的产品未介绍到，下次需要在脑子清醒理性的时候思考上课顺序。
         \end{itemize}
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{韩山师范学院《人工智能金融应用实战》}
+\begin{frame}[allowframebreaks]{韩山师范学院《人工智能金融应用实战》}
     \begin{block}{工作投入}
         \begin{itemize}
             \item \textbf{备课}：4 小时
@@ -97,13 +119,9 @@
 
     \begin{alertblock}{问题反馈}
         \begin{itemize}
-            \item \textbf{课前调查}：对学生基础的评估维度单调，“有无”选项无法精准反映班级基础层次。
-            \item \textbf{产品反馈}：
-                \begin{enumerate}
-                    \item 学生名单导入错误，部分学生不在项目组织中，无法参与课堂小测；
-                    \item 代码不能编辑 Markdown 单元格，否则会造成 CCI 假死，无法运行后续代码；
-                    \item CCI 时长资源不足，时间不够需要在临内项群中手动续时。
-                \end{enumerate}
+            \item 学生名单导入错误，部分学生不在项目组织中，无法参与课堂小测。
+            \item CCI 时长资源不足，需要在临内项群中手动续时，上课前需检查规避此问题。
+            \item 代码不能编辑 Markdown 单元格，否则会造成 CCI 假死，一段时间都无法运行后续代码，甚至有时候刷新仍然无法运行，此时为了不冷场只能带着学生想象输入输出。
         \end{itemize}
     \end{alertblock}
 \end{frame}
