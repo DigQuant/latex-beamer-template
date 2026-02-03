@@ -1,5 +1,10 @@
 \documentclass[AutoFakeBold, t, aspectratio=169]{ctexbeamer}
     \input{static/preamble.tex}
+
+    \title{2025 年度工作总结}
+    \author{iydon}
+    \institute[DigQuant]{深圳点宽网络科技有限公司}
+    \date{\today}
 \begin{document}
     \begin{frame}
         \titlepage
@@ -21,10 +26,11 @@
         \input{section/5_reflection.tex}
         \input{section/6_planning.tex}
 
-    \begin{frame}[c]
-        \centering
-        \Huge 感谢您的观看 \\
-        \vspace{1cm}
-        \Large 敬请批评指正
+    \setbeamertemplate{headline}{}
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{static/background.png}}
+    \begin{frame}
+        \vspace{5.1cm}
+        \hspace{0.7cm}
+        \textcolor{white}{感~谢~您~的~观~看}
     \end{frame}
 \end{document}
