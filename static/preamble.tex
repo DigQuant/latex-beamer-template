@@ -5,29 +5,47 @@
     \setbeamercolor{frametitle}{fg=main}
     \setbeamercolor{structure}{fg=main}
     \setbeamerfont{title}{size=\LARGE, series=\bfseries}
-
-\usepackage{fontspec}
-    % English Fonts
-    \setmainfont{Consolas}
-    \setsansfont{Consolas}
-    \setmonofont{Consolas}
-    % Chinese Fonts
-    \setCJKmainfont{Microsoft YaHei}
-    \setCJKsansfont{Microsoft YaHei}
-    \setCJKmonofont{Microsoft YaHei}
-
 \AtBeginSection[]{
     \begin{frame}{目录}
         \tableofcontents[currentsection]
     \end{frame}
 }
+\setbeamertemplate{navigation symbols}{}
 
+\usepackage[BoldFont, SlantFont]{xeCJK}
+    % English
+    \defaultfontfeatures[FiraCode]{
+        Path          = static/font/FiraCode/,
+        Extension     = .ttf,
+        UprightFont   = FiraCode-Regular,
+        BoldFont      = FiraCode-Bold,
+        AutoFakeSlant = 0.2,
+        Contextuals   = Alternate
+    }
+    \setmainfont{FiraCode}
+    \setsansfont{FiraCode}
+    \setmonofont{FiraCode}
+    % Chinese
+    \defaultfontfeatures[AlibabaPuHuiTi-3]{
+        Path          = static/font/AlibabaPuHuiTi-3/,
+        Extension     = .otf,
+        UprightFont   = Regular,
+        BoldFont      = Bold,
+        AutoFakeSlant = 0.2
+    }
+    \setCJKmainfont{AlibabaPuHuiTi-3}
+    \setCJKsansfont{AlibabaPuHuiTi-3}
+    \setCJKmonofont{AlibabaPuHuiTi-3}
+\usepackage{unicode-math}
+    % tlmgr install firamath
+    \unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+    \setmathfont{Fira Math}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
     \hypersetup{
-        pdfauthor={Iydon},
-        pdfcreator={Microsoft® Word 2077},
-        pdfproducer={Microsoft® Word 2077},
+        pdfauthor={iydon},
+        pdfcreator={null},
+        pdfproducer={null},
         colorlinks = true,
         linkcolor  = Aquamarine!50!black,
         urlcolor   = YellowOrange!85!black,
@@ -38,7 +56,7 @@
         \ifnum\insertframenumber>1
             \begin{tikzpicture}[remember picture, overlay]
                 \node[anchor=north east, xshift=-0.3cm, yshift=-0.2cm] at (current page.north east) {
-                    \includegraphics[height=0.55cm]{static/logo.png}
+                    \includegraphics[height=0.55cm]{static/image/logo.png}
                 };
             \end{tikzpicture}
         \fi
@@ -50,33 +68,69 @@
             ([xshift=-0.3cm, yshift=-1.1cm]current page.north east);
         \end{tikzpicture}
     }
-\usepackage[listings, skins]{tcolorbox}
-    \NewTCBListing{ipy}{ O{} m }{
-        title={#2},
+\usepackage[minted, skins]{tcolorbox}
+    \NewTCBListing{ipyenv}{ O{} m }{
+        enhanced,
+        drop shadow,
         listing only,
-        listing options={
-            language=python,
-            numbers=left,
+        listing engine=minted,
+        minted language=python,
+        minted options={
+            linenos,
+            breaklines,
+            autogobble,
+            fontsize=\tiny,
             numbersep=3pt,
-            basicstyle=\ttfamily\footnotesize, % Use monospaced font
-            showspaces=false,
-            showstringspaces=false,
-            aboveskip=0pt,
-            belowskip=0pt,
         },
-        #1
-    }
-    \NewTCBListing{ish}{ O{} m }{
         title={#2},
-        listing only,
-        listing options={
-            language=bash,
-            basicstyle=\ttfamily\footnotesize, % Use monospaced font
-            showspaces=false,
-            showstringspaces=false,
-            aboveskip=0pt,
-            belowskip=0pt,
-        },
+        colframe=main,
+        colback=white,
+        left=5mm,
         #1
     }
+    \NewTCBListing{ishenv}{ O{} m }{
+        enhanced,
+        drop shadow,
+        listing only,
+        listing engine=minted,
+        minted language=bash,
+        minted options={
+            linenos,
+            breaklines,
+            autogobble,
+            fontsize=\tiny,
+            numbersep=3pt,
+        },
+        title={#2},
+        colframe=main,
+        colback=white,
+        left=5mm,
+        #1
+    }
+    \NewTotalTCBox{\ipycmd}{ v }{
+        tcbox raise base,
+        nobeforeafter,
+        arc=2pt,
+        colback=gray!5!white,
+        colframe=white,
+        left=0pt,
+        right=0pt,
+        top=1pt,
+        bottom=1pt,
+        boxsep=0pt,
+        fontupper=\ttfamily,
+    }{\mintinline{python}{#1}}
+    \NewTotalTCBox{\ishcmd}{ v }{
+        tcbox raise base,
+        nobeforeafter,
+        arc=2pt,
+        colback=gray!5!white,
+        colframe=white,
+        left=0pt,
+        right=0pt,
+        top=1pt,
+        bottom=1pt,
+        boxsep=0pt,
+        fontupper=\ttfamily,
+    }{\mintinline{bash}{#1}}
 \usepackage{booktabs}

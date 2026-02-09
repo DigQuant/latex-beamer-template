@@ -5,5 +5,5 @@ LATEXMK = latexmk
 
 
 compile:
-	$(LATEXMK) -xelatex -output-directory=cache
+	$(LATEXMK) -xelatex -latexoption="-shell-escape" -output-directory=cache
 	cp cache/main.pdf ./

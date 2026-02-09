@@ -25,12 +25,15 @@
     \begin{frame}{公式示例}
         一个简单的例子：
         \[
-        y = f(x) = \alpha x + \beta
+        \int_0^{\mathrm{\pi}} \sin x \, \mathrm{d}x = 2
         \]
     \end{frame}
 
     \begin{frame}[fragile]{代码示例}
-        \begin{ipy}{Python}
+        \begin{columns}
+            \begin{column}{.6\textwidth}
+                测试
+                \begin{ipyenv}{}
 def load_kaggle_data(file_path: str) -> pd.DataFrame:
     """
     从 CSV 文件加载 Kaggle 数据集
@@ -42,7 +45,12 @@ def load_kaggle_data(file_path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     print(f"加载数据: {len(df)} 行, {len(df.columns)} 列")
     return df
-        \end{ipy}
+                \end{ipyenv}
+            \end{column}
+            \begin{column}{.36\textwidth}
+                比如输入 \ipycmd{import this} 即可查看即可查看即可查看即可查看即可查看即可查看即可查看即可查看即可查看即可查看即可查看即可查看即 \ishcmd{winget install ...} 可查看即可查看即可查看即可查看即可查看即可查看
+            \end{column}
+        \end{columns}
     \end{frame}
 
 \section{结果}
@@ -55,14 +63,15 @@ def load_kaggle_data(file_path: str) -> pd.DataFrame:
     \end{frame}
 
     \begin{frame}{表格示例}
-        \begin{table}
-            \centering
-            \begin{tabular}{c|c}
-                方法 & 准确率 \\
-                \hline
-                模型A & 92\% \\
-                模型B & 95\% \\
-            \end{tabular}
-        \caption{实验结果}
-        \end{table}
+        \centering
+        \begin{tabular}{@{}llr@{}}
+        \toprule
+        \multicolumn{2}{c}{Item} &            \\ \midrule
+        Animal     & Description & Price (\$) \\ \midrule
+        Gnat       & per gram    & 13.65      \\
+                & each        & 0.01       \\
+        Gnu        & stuffed     & 92.50      \\
+        Emu        & stuffed     & 33.33      \\
+        Armadillo  & frozen      & 8.99       \\ \bottomrule
+        \end{tabular}
     \end{frame}
