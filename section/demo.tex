@@ -1,0 +1,155 @@
+\subsection{基础文本与列表}
+\begin{frame}{文本样式与列表}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \textbf{文本样式}
+            \begin{itemize}
+                \item 普通文本
+                \item \textbf{粗体文本}
+                \item \textit{斜体文本}
+                \item \alert{强调文本 (Alert)}
+                \item \textcolor{main}{主色调文本}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{列表环境}
+            \begin{enumerate}
+                \item 第一项
+                \item 第二项
+                    \begin{itemize}
+                        \item 子项 A
+                        \item 子项 B
+                    \end{itemize}
+                \item 第三项
+            \end{enumerate}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{描述列表}
+    \begin{description}
+        \item[API] 应用程序接口 \pause
+        \item[GUI] 图形用户界面 \pause
+        \item[CLI] 命令行界面
+    \end{description}
+
+    \vspace{1em}
+    \textbf{覆盖示例：}
+    \begin{itemize}
+        \item<3-> 第三步出现
+        \item<4-> 第四步出现
+        \item<5-> 第五步出现
+    \end{itemize}
+\end{frame}
+
+\subsection{区块与数学公式}
+\begin{frame}{Beamer 区块}
+    \begin{block}{普通区块}
+        这是一个标准的 Beamer 区块，用于放置一般信息。
+    \end{block}
+
+    \begin{alertblock}{警告区块}
+        这是一个警告区块，用于强调重要或危险的信息。
+    \end{alertblock}
+
+    \begin{exampleblock}{示例区块}
+        这是一个示例区块，常用于展示案例或证明。
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{数学公式}
+    行内公式：$E = mc^2$ 或 $e^{i\pi} + 1 = 0$
+
+    \vspace{1em}
+    行间公式（积分）：
+    \[
+        \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
+    \]
+
+    矩阵示例：
+    \[
+        A = \begin{pmatrix}
+            1 & 0 \\
+            0 & 1
+        \end{pmatrix}, \quad
+        B = \begin{bmatrix}
+            x & y \\
+            z & w
+        \end{bmatrix}
+    \]
+\end{frame}
+
+\subsection{代码展示}
+\begin{frame}[fragile]{Python 代码环境 (ipyenv)}
+    使用 \texttt{ipyenv} 环境展示 Python 代码：
+    \begin{ipyenv}{数据处理脚本}
+import pandas as pd
+import numpy as np
+
+def process_data(df):
+    """处理数据框"""
+    # 计算移动平均
+    df['ma_5'] = df['close'].rolling(5).mean()
+    return df
+
+# 示例调用
+df = pd.DataFrame({'close': np.random.randn(100)})
+result = process_data(df)
+print(result.head())
+    \end{ipyenv}
+
+    行内代码示例：使用 \ipycmd{pip install pandas} 安装库。
+\end{frame}
+
+\begin{frame}[fragile]{Shell 代码环境}
+    使用 \texttt{ishenv} 环境展示 Bash/Shell 命令：
+    \begin{ishenv}{服务器配置}
+#!/bin/bash
+# 更新系统
+sudo apt update && sudo apt upgrade -y
+
+# 安装 Nginx
+sudo apt install nginx
+
+# 启动服务
+sudo systemctl start nginx
+echo "Nginx started successfully"
+    \end{ishenv}
+
+    行内命令示例：运行 \ishcmd{ls -la} 查看文件列表。
+\end{frame}
+
+\subsection{表格与图片}
+\begin{frame}{三线表}
+    \begin{table}
+        \centering
+        \caption{编程语言流行度示例}
+        \begin{tabular}{llrr}
+            \toprule
+            \textbf{排名} & \textbf{语言} & \textbf{份额 (\%)} & \textbf{变化} \\
+            \midrule
+            1 & Python & 25.4 & +2.1 \\
+            2 & C++    & 18.2 & -0.5 \\
+            3 & Java   & 14.8 & -1.2 \\
+            4 & Go     & 9.5  & +3.4 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{图片与图文混排}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item 左侧是文本说明
+                \item 右侧是图片展示
+                \item 图片可以是 Logo 或示意图
+                \item 使用 \texttt{columns} 环境实现分栏
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{static/image/logo.png}
+        \end{column}
+    \end{columns}
+\end{frame}
