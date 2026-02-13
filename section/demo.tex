@@ -1,155 +1,131 @@
 \section{基础文本与列表}
-\begin{frame}{文本样式与列表}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{文本样式}
+\begin{frame}{基础文本与列表布局}
+    \begin{columns}[T]
+        \begin{column}{0.33\textwidth}
+            \textbf{\color{main} 字体与颜色}
             \begin{itemize}
-                \item 普通文本
-                \item \textbf{粗体文本}
-                \item \textit{斜体文本}
-                \item \alert{强调文本 (Alert)}
-                \item \textcolor{main}{主色调文本}
+                \item \textbf{粗体 Bold} \quad \textit{斜体 Italic}
+                \item \texttt{等宽 Monospace}
+                \item \alert{警告 Alert} \quad \textcolor{main}{主色 Main}
+                \item 数学: $\mathcal{A} \mathfrak{B} \mathbb{C}$
+                \item 符号: $\to \implies \infty$
             \end{itemize}
         \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{列表环境}
+        \begin{column}{0.33\textwidth}
+            \textbf{\color{main} 列表环境}
             \begin{enumerate}
-                \item 第一项
-                \item 第二项
-                    \begin{itemize}
-                        \item 子项 A
-                        \item 子项 B
-                    \end{itemize}
-                \item 第三项
+                \item 有序列表项 1
+                \item 有序列表项 2
+                \begin{itemize}
+                    \item 无序子项 A
+                    \item[-] 自定义符号
+                \end{itemize}
             \end{enumerate}
         \end{column}
+        \begin{column}{0.33\textwidth}
+            \textbf{\color{main} 描述列表}
+            \begin{description}
+                \item[TikZ] 绘图包
+                \item[Minted] 代码高亮
+                \item[Beamer] 演示文稿
+            \end{description}
+        \end{column}
     \end{columns}
-\end{frame}
-
-\begin{frame}{描述列表}
-    \begin{description}
-        \item[API] 应用程序接口 \pause
-        \item[GUI] 图形用户界面 \pause
-        \item[CLI] 命令行界面
-    \end{description}
-
-    \vspace{1em}
-    \textbf{覆盖示例：}
-    \begin{itemize}
-        \item<3-> 第三步出现
-        \item<4-> 第四步出现
-        \item<5-> 第五步出现
-    \end{itemize}
 \end{frame}
 
 \section{区块与数学公式}
-\begin{frame}{Beamer 区块}
-    \begin{block}{普通区块}
-        这是一个标准的 Beamer 区块，用于放置一般信息。
-    \end{block}
-
-    \begin{alertblock}{警告区块}
-        这是一个警告区块，用于强调重要或危险的信息。
-    \end{alertblock}
-
-    \begin{exampleblock}{示例区块}
-        这是一个示例区块，常用于展示案例或证明。
-    \end{exampleblock}
-\end{frame}
-
-\begin{frame}{数学公式}
-    行内公式：$E = mc^2$ 或 $e^{i\pi} + 1 = 0$
-
-    \vspace{1em}
-    行间公式（积分）：
-    \[
-        \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
-    \]
-
-    矩阵示例：
-    \[
-        A = \begin{pmatrix}
-            1 & 0 \\
-            0 & 1
-        \end{pmatrix}, \quad
-        B = \begin{bmatrix}
-            x & y \\
-            z & w
-        \end{bmatrix}
-    \]
-\end{frame}
-
-\section{代码展示}
-\begin{frame}[fragile]{Python 代码环境 (ipyenv)}
-    使用 \texttt{ipyenv} 环境展示 Python 代码：
-    \begin{ipyenv}{数据处理脚本}
-import pandas as pd
-import numpy as np
-
-def process_data(df):
-    """处理数据框"""
-    # 计算移动平均
-    df['ma_5'] = df['close'].rolling(5).mean()
-    return df
-
-# 示例调用
-df = pd.DataFrame({'close': np.random.randn(100)})
-result = process_data(df)
-print(result.head())
-    \end{ipyenv}
-
-    行内代码示例：使用 \ipycmd{pip install pandas} 安装库。
-\end{frame}
-
-\begin{frame}[fragile]{Shell 代码环境}
-    使用 \texttt{ishenv} 环境展示 Bash/Shell 命令：
-    \begin{ishenv}{服务器配置}
-#!/bin/bash
-# 更新系统
-sudo apt update && sudo apt upgrade -y
-
-# 安装 Nginx
-sudo apt install nginx
-
-# 启动服务
-sudo systemctl start nginx
-echo "Nginx started successfully"
-    \end{ishenv}
-
-    行内命令示例：运行 \ishcmd{ls -la} 查看文件列表。
-\end{frame}
-
-\section{表格与图片}
-\begin{frame}{三线表}
-    \begin{table}
-        \centering
-        \caption{编程语言流行度示例}
-        \begin{tabular}{llrr}
-            \toprule
-            \textbf{排名} & \textbf{语言} & \textbf{份额 (\%)} & \textbf{变化} \\
-            \midrule
-            1 & Python & 25.4 & +2.1 \\
-            2 & C++    & 18.2 & -0.5 \\
-            3 & Java   & 14.8 & -1.2 \\
-            4 & Go     & 9.5  & +3.4 \\
-            \bottomrule
-        \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{图片与图文混排}
-    \begin{columns}
-        \begin{column}{0.6\textwidth}
-            \begin{itemize}
-                \item 左侧是文本说明
-                \item 右侧是图片展示
-                \item 图片可以是 Logo 或示意图
-                \item 使用 \texttt{columns} 环境实现分栏
-            \end{itemize}
+\begin{frame}{区块封装与数学公式}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{标准区块 (Block)}
+                用于定义、定理或一般说明。
+            \end{block}
+            \begin{alertblock}{警告区块 (Alert Block)}
+                用于强调关键点或注意事项。
+            \end{alertblock}
+            \begin{exampleblock}{示例区块 (Example Block)}
+                $E=mc^2$ 是最著名的公式。
+            \end{exampleblock}
         \end{column}
-        \begin{column}{0.4\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{static/image/logo.png}
+        \begin{column}{0.48\textwidth}
+            \textbf{\color{main} 数学排版 (physics 包)}
+            \begin{itemize}
+                \item 导数: $\dv{f}{x}, \pdv{f}{x, y}$
+                \item 矩阵: $\mqty(a & b \\ c & d)$
+                \item 括号: $\qty(\frac{a}{b}), \ev{H}$
+            \end{itemize}
+            \textbf{多行公式:}
+            \begin{equation}
+                \begin{aligned}
+                    \mathcal{L} &= - \sum_{i=1}^N y_i \log(\hat{y}_i) \\
+                                &= \text{Cross Entropy}
+                \end{aligned}
+            \end{equation}
         \end{column}
     \end{columns}
+\end{frame}
+
+\section{代码与表格}
+\begin{frame}[fragile]{代码高亮与三线表}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \textbf{\color{main} Python 代码 (ipyenv)}
+            \begin{ipyenv}{Data Processing}
+import pandas as pd
+# 链式操作示例
+df = (pd.read_csv('data.csv')
+      .query('close > 100')
+      .assign(ret=lambda x: x.close.pct_change()))
+            \end{ipyenv}
+            \vspace{0.5em}
+            \textbf{Shell 命令 (ishenv)}
+            \begin{ishenv}{Server Setup}
+# 部署脚本
+pip install -r requirements.txt
+gunicorn -w 4 -b 0.0.0.0:8000 app:server
+            \end{ishenv}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \textbf{\color{main} 经典三线表 (Booktabs)}
+            \begin{table}
+                \centering
+                \small
+                \begin{tabular}{llr}
+                    \toprule
+                    \textbf{模型} & \textbf{参数} & \textbf{精度} \\
+                    \midrule
+                    ResNet-18 & 11M & 89.2\% \\
+                    ViT-Base  & 86M & 94.5\% \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+            \vspace{1em}
+            \textbf{行内代码:} \\
+            运行 \ishcmd{git status} 查看状态。
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{绘图示例}
+\begin{frame}{TikZ 基础绘图示例}
+    \centering
+    % 引入必要的 TikZ 库
+    \usetikzlibrary{positioning, arrows.meta}
+    \begin{tikzpicture}[
+        node distance=2cm,
+        % 定义样式：方框、圆形、箭头
+        box/.style={rectangle, draw=main, fill=main!10, thick, minimum size=1cm, rounded corners},
+        circ/.style={circle, draw=alert, fill=alert!10, thick, minimum size=0.8cm},
+        arrow/.style={-Stealth, thick, color=main}
+    ]
+        % 1. 放置节点
+        \node[box] (input) {输入数据};
+        \node[box, right=of input] (process) {处理模块};
+        \node[circ, right=of process] (output) {输出};
+        % 2. 绘制连线
+        \draw[arrow] (input) -- node[above, font=\tiny]{raw} (process);
+        \draw[arrow] (process) -- node[above, font=\tiny]{clean} (output);
+        % 3. 添加说明
+        \node[below=0.5cm of process, color=gray, font=\footnotesize] {简单的线性流程图};
+    \end{tikzpicture}
 \end{frame}
