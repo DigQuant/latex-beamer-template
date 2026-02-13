@@ -1,20 +1,16 @@
 \documentclass[handout, t, aspectratio=169]{ctexbeamer}
-    \input{static/preamble.tex}
+    \newcommand{\iroot}{static}
+    \input{\iroot/preamble.tex}
 
     \title{Beamer 示例}
     \author{金融科技教研部}
     \institute[DigQuant]{深圳点宽网络科技有限公司}
     \date{\today}
 \begin{document}
-    \begin{frame}
-        \titlepage
-    \end{frame}
+    \frame{\titlepage}
 
-    \begin{frame}{目录}
-        \tableofcontents
-    \end{frame}
-
-    \section{示例}
+    \part{示例一}
+    % \frame{\partpage}
     \input{section/demo.tex}
 
     \begin{frame}[c]
