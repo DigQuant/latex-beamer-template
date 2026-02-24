@@ -5,22 +5,54 @@
 
 \usetheme{Boadilla}
     \definecolor{main}{HTML}{3F67B8}
+    % font
+    \setbeamerfont{title}{size=\LARGE, series=\bfseries}
+    % color
     \setbeamercolor{alertblock title}{bg=main!15, fg=main}
     \setbeamercolor{block title}{bg=main!10, fg=main}
     \setbeamercolor{frametitle}{fg=main}
     \setbeamercolor{structure}{fg=main}
-    \setbeamerfont{title}{size=\LARGE, series=\bfseries}
+    \setbeamercolor{section number projected}{bg=main, fg=white}
+    \setbeamercolor{subsection number projected}{bg=main!50, fg=white}
+    \setbeamercolor{section number projected}{bg=main, fg=white}
+    \setbeamercolor{subsection number projected}{bg=main!50, fg=white}
+    % template
+    \setbeamertemplate{sections/subsections in toc}[square]
+    \setbeamertemplate{navigation symbols}{}
+
 \AtBeginSection[]{
-    \begin{frame}[t]{目录}
-        \begin{multicols}{2}
-            \tableofcontents[currentsection, hideothersubsections]
-        \end{multicols}
+    \begin{frame}[noframenumbering, plain]
+        \centering
+        \vfill
+        {
+            \usebeamerfont{section title}
+            \LARGE
+            \insertsectionnumber.\ \insertsection
+            \par
+        }
+        \vfill
+        \begin{tikzpicture}[overlay, remember picture]
+            \pgfmathsetlengthmacro{\bary}{4cm}
+            \pgfmathsetlengthmacro{\barxstart}{0.10\paperwidth}
+            \pgfmathsetlengthmacro{\barxend}{0.90\paperwidth}
+            \pgfmathsetlengthmacro{\barheight}{0.08cm}
+            \pgfmathsetlengthmacro{\barwidth}{\barxend-\barxstart}
+            \pgfmathsetmacro{\totalframes}{max(\inserttotalframenumber, 1)}
+            \pgfmathsetmacro{\ratio}{min((\value{framenumber})/\totalframes, 1)}
+            \pgfmathsetlengthmacro{\progress}{\ratio*\barwidth}
+            \fill[gray!20, rounded corners=1.2pt]
+                ($(current page.south west)+(\barxstart, \bary)$) rectangle
+                ($(current page.south west)+(\barxend, \bary+\barheight)$);
+            \fill[main, rounded corners=1.2pt]
+                ($(current page.south west)+(\barxstart, \bary)$) rectangle
+                ($(current page.south west)+(\barxstart+\progress, \bary+\barheight)$);
+        \end{tikzpicture}
     \end{frame}
 }
-\setbeamertemplate{navigation symbols}{}
+
 \apptocmd{\partpage}{
     \begin{multicols}{2}
-        \begin{spacing}{1.5}
+        \begin{spacing}{1.2}
             \tableofcontents[part=\value{part}]
         \end{spacing}
     \end{multicols}
@@ -61,11 +93,12 @@
         pdfcreator={null},
         pdfproducer={null},
         colorlinks = true,
-        linkcolor  = Aquamarine!50!black,
+        linkcolor  = main!50!black,  % Aquamarine!50!black
         urlcolor   = YellowOrange!85!black,
         citecolor  = violet!85!black,
     }
-\usepackage{graphicx, tikz}
+\usepackage{caption, graphicx, tikz}
+    \usetikzlibrary{arrows.meta, calc, positioning, shapes}
     \addtobeamertemplate{headline}{}{
         \ifnum\insertframenumber>1
             \begin{tikzpicture}[remember picture, overlay]
