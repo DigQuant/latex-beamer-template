@@ -65,6 +65,7 @@
     \end{columns}
 \end{frame}
 
+
 \section{结构化内容}
 
 \subsection{区块样式}
@@ -123,6 +124,7 @@
     \end{columns}
 \end{frame}
 
+
 \section{编程与数据}
 
 \subsection{代码高亮}
@@ -171,6 +173,31 @@ echo "Deployment successful!"
     \end{columns}
 \end{frame}
 
+
+\begin{frame}[fragile]{代码高亮 (SQL)}
+    \begin{columns}[T]
+        \begin{column}{0.9\textwidth}
+            \textbf{\color{main} SQL 数据查询}
+            \begin{isqlenv}{query.sql}
+-- 统计高价值用户
+SELECT
+    u.username,
+    COUNT(o.order_id) as order_count,
+    SUM(o.total_amount) as total_spent
+FROM users u
+JOIN orders o ON u.id = o.user_id
+WHERE u.active = true
+GROUP BY 1
+HAVING total_spent > 1000
+ORDER BY total_spent DESC;
+            \end{isqlenv}
+            \vspace{0.5em}
+            \small
+            行内代码示例：使用 \isqlcmd{SELECT * FROM users} 查询所有用户。
+        \end{column}
+    \end{columns}
+\end{frame}
+
 \subsection{表格展示}
 \begin{frame}{学术风格表格 (Booktabs)}
     \begin{table}
@@ -194,6 +221,7 @@ echo "Deployment successful!"
         \item 表格标题通常置于表格上方。
     \end{itemize}
 \end{frame}
+
 
 \section{可视化}
 
