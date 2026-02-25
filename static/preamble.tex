@@ -111,13 +111,13 @@
         \end{tikzpicture}
     }
 \usepackage[breakable, minted, skins]{tcolorbox}
-    \NewTCBListing{ipyenv}{ O{} m }{
+    \NewTCBListing{iCodeEnv}{ O{} m m }{
         breakable,
         enhanced,
         drop shadow,
         listing only,
         listing engine=minted,
-        minted language=python,
+        minted language=#3,
         minted options={
             linenos,
             breaklines,
@@ -131,47 +131,7 @@
         left=5mm,
         #1
     }
-    \NewTCBListing{ishenv}{ O{} m }{
-        breakable,
-        enhanced,
-        drop shadow,
-        listing only,
-        listing engine=minted,
-        minted language=bash,
-        minted options={
-            linenos,
-            breaklines,
-            autogobble,
-            fontsize=\tiny,
-            numbersep=3pt,
-        },
-        title={#2},
-        colframe=main,
-        colback=white,
-        left=5mm,
-        #1
-    }
-    \NewTCBListing{isqlenv}{ O{} m }{
-        breakable,
-        enhanced,
-        drop shadow,
-        listing only,
-        listing engine=minted,
-        minted language=sql,
-        minted options={
-            linenos,
-            breaklines,
-            autogobble,
-            fontsize=\tiny,
-            numbersep=3pt,
-        },
-        title={#2},
-        colframe=main,
-        colback=white,
-        left=5mm,
-        #1
-    }
-    \NewTotalTCBox{\ipycmd}{ v }{
+    \NewTotalTCBox{\iCodeCmd}{ O{python} v }{
         breakable,
         tcbox raise base,
         nobeforeafter,
@@ -184,35 +144,20 @@
         bottom=1pt,
         boxsep=0pt,
         fontupper=\ttfamily,
-    }{\mintinline{python}{#1}}
-    \NewTotalTCBox{\ishcmd}{ v }{
-        breakable,
-        tcbox raise base,
-        nobeforeafter,
-        arc=2pt,
-        colback=gray!5!white,
-        colframe=white,
-        left=0pt,
-        right=0pt,
-        top=1pt,
-        bottom=1pt,
-        boxsep=0pt,
-        fontupper=\ttfamily,
-    }{\mintinline{bash}{#1}}
-    \NewTotalTCBox{\isqlcmd}{ v }{
-        breakable,
-        tcbox raise base,
-        nobeforeafter,
-        arc=2pt,
-        colback=gray!5!white,
-        colframe=white,
-        left=0pt,
-        right=0pt,
-        top=1pt,
-        bottom=1pt,
-        boxsep=0pt,
-        fontupper=\ttfamily,
-    }{\mintinline{sql}{#1}}
+    }{\mintinline{#1}{#2}}
+    % patch
+    \NewDocumentEnvironment{ipyenv}{ O{} m }
+    {\begin{iCodeEnv}[#1]{#2}{python}}
+    {\end{iCodeEnv}}
+    \NewDocumentEnvironment{ishenv}{ O{} m }
+    {\begin{iCodeEnv}[#1]{#2}{bash}}
+    {\end{iCodeEnv}}
+    \NewDocumentEnvironment{isqlenv}{ O{} m }
+    {\begin{iCodeEnv}[#1]{#2}{sql}}
+    {\end{iCodeEnv}}
+    \NewDocumentCommand{\ipycmd}{ v }{\iCodeCmd[python]{#1}}
+    \NewDocumentCommand{\ishcmd}{ v }{\iCodeCmd[bash]{#1}}
+    \NewDocumentCommand{\isqlcmd}{ v }{\iCodeCmd[sql]{#1}}
 
 \usepackage{booktabs}
 \usepackage{etoolbox}

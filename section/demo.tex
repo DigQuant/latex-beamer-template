@@ -128,11 +128,11 @@
 \section{编程与数据}
 
 \subsection{代码高亮}
-\begin{frame}[fragile]{代码高亮 (Python \& Bash)}
+\begin{frame}[fragile]{代码高亮}
     \begin{columns}[T]
         \begin{column}{0.5\textwidth}
             \textbf{\color{main} Python 数据分析}
-            \begin{ipyenv}{analysis.py}
+            \begin{iCodeEnv}{something\_analysis.py}{python}
 import numpy as np
 import pandas as pd
 
@@ -149,11 +149,11 @@ def calculate_metrics(data):
 # 加载数据
 df = pd.read_csv('sales_data.csv')
 metrics = calculate_metrics(df['amount'])
-            \end{ipyenv}
+            \end{iCodeEnv}
         \end{column}
         \begin{column}{0.45\textwidth}
             \textbf{\color{main} 系统运维脚本}
-            \begin{ishenv}{deploy.sh}
+            \begin{iCodeEnv}{deploy\_docker.sh}{bash}
 #!/bin/bash
 
 # 检查环境变量
@@ -165,35 +165,10 @@ fi
 echo "Deploying to $ENV..."
 docker-compose up -d --build
 echo "Deployment successful!"
-            \end{ishenv}
+            \end{iCodeEnv}
             \vspace{0.5em}
             \small
-            可以使用 \ipycmd{print("Hello")} 或 \ishcmd{ls -la} 在行内插入代码。
-        \end{column}
-    \end{columns}
-\end{frame}
-
-
-\begin{frame}[fragile]{代码高亮 (SQL)}
-    \begin{columns}[T]
-        \begin{column}{0.9\textwidth}
-            \textbf{\color{main} SQL 数据查询}
-            \begin{isqlenv}{query.sql}
--- 统计高价值用户
-SELECT
-    u.username,
-    COUNT(o.order_id) as order_count,
-    SUM(o.total_amount) as total_spent
-FROM users u
-JOIN orders o ON u.id = o.user_id
-WHERE u.active = true
-GROUP BY 1
-HAVING total_spent > 1000
-ORDER BY total_spent DESC;
-            \end{isqlenv}
-            \vspace{0.5em}
-            \small
-            行内代码示例：使用 \isqlcmd{SELECT * FROM users} 查询所有用户。
+            使用 \iCodeCmd{print("Hello")} 或 \iCodeCmd[bash]{ls -la} 或 \iCodeCmd[sql]{SELECT * FROM users} 在行内插入代码。
         \end{column}
     \end{columns}
 \end{frame}
