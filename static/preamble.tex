@@ -2,6 +2,7 @@
     \definecolor{main}{HTML}{3F67B8}
     % font
     \setbeamerfont{title}{size=\LARGE, series=\bfseries}
+    \setbeamerfont{part title}{size=\Large}
     % color
     \setbeamercolor{alertblock title}{bg=main!15, fg=main}
     \setbeamercolor{block title}{bg=main!10, fg=main}
@@ -111,27 +112,32 @@
         \end{tikzpicture}
     }
 \usepackage[breakable, minted, skins]{tcolorbox}
+    \tcbset{
+        iCodeStyle/.style={
+            breakable,
+            enhanced,
+            drop shadow,
+            listing only,
+            listing engine=minted,
+            minted options={
+                linenos,
+                breaklines,
+                autogobble,
+                fontsize=\tiny,
+                numbersep=3pt,
+            },
+            colframe=main,
+            colback=white,
+            left=5mm,
+        }
+    }
     \NewTCBListing{iCodeEnv}{ O{} m m }{
-        breakable,
-        enhanced,
-        drop shadow,
-        listing only,
-        listing engine=minted,
+        iCodeStyle,
         minted language=#3,
-        minted options={
-            linenos,
-            breaklines,
-            autogobble,
-            fontsize=\tiny,
-            numbersep=3pt,
-        },
         title={#2},
-        colframe=main,
-        colback=white,
-        left=5mm,
         #1
     }
-    \NewTotalTCBox{\iCodeCmd}{ O{python} v }{
+    \NewTotalTCBox{\iCodeCmd}{ O{python} m }{
         breakable,
         tcbox raise base,
         nobeforeafter,
@@ -146,15 +152,12 @@
         fontupper=\ttfamily,
     }{\mintinline{#1}{#2}}
     % patch
-    \NewDocumentEnvironment{ipyenv}{ O{} m }
-    {\begin{iCodeEnv}[#1]{#2}{python}}
-    {\end{iCodeEnv}}
-    \NewDocumentEnvironment{ishenv}{ O{} m }
-    {\begin{iCodeEnv}[#1]{#2}{bash}}
-    {\end{iCodeEnv}}
-    \NewDocumentEnvironment{isqlenv}{ O{} m }
-    {\begin{iCodeEnv}[#1]{#2}{sql}}
-    {\end{iCodeEnv}}
+    \NewTCBListing{ipyenv}{ O{} m }
+        {iCodeStyle, minted language=python, title={#2}, #1}
+    \NewTCBListing{ishenv}{ O{} m }
+        {iCodeStyle, minted language=bash, title={#2}, #1}
+    \NewTCBListing{isqlenv}{ O{} m }
+        {iCodeStyle, minted language=sql, title={#2}, #1}
     \NewDocumentCommand{\ipycmd}{ v }{\iCodeCmd[python]{#1}}
     \NewDocumentCommand{\ishcmd}{ v }{\iCodeCmd[bash]{#1}}
     \NewDocumentCommand{\isqlcmd}{ v }{\iCodeCmd[sql]{#1}}
